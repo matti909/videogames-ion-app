@@ -1,5 +1,7 @@
 import { Component, OnInit, inject } from '@angular/core';
+import { IGenre, Videogames } from 'src/app/interfaces';
 import { LanguageService } from 'src/app/services/language.service';
+import { VideogamesService } from 'src/app/services/videogames.service';
 
 @Component({
   selector: 'app-home',
@@ -8,13 +10,36 @@ import { LanguageService } from 'src/app/services/language.service';
 })
 export class HomePage implements OnInit {
   language = inject(LanguageService);
+  games = inject(VideogamesService);
+  videogames: Videogames[] = [];
+  genres : IGenre[]= []
   selectedLanguage = '';
 
   ngOnInit() {
     this.selectedLanguage = localStorage.getItem('language') as string;
+    this.getVGames();
+    this.getVGenres();
   }
 
   setLanguage() {
     this.language.setLanguage(this.selectedLanguage);
+  }
+
+  getVGames() {
+    this.games.getGames().subscribe({
+      next: (res: any) => {
+        console.log(res);
+        this.videogames = res
+      },
+    });
+  }
+
+  getVGenres() {
+    this.games.getGenres().subscribe({
+      next: (res: any) => {
+        console.log(res);
+        this.genres = res
+      },
+    });
   }
 }

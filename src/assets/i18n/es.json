@@ -1,6 +1,6 @@
 {
     "HOME": {
-        "season": "Temporada",
+        "genres": "Categorias",
         "episode": "Episodio",
         "search_episode_by_number": "Buscar episodio por número"
     },
@@ -13,5 +13,9 @@
         "title": "Idioma",
         "spanish": "Español",
         "english": "Inglés"
+    },
+    "BUTTONS": {
+        "accept": "Aceptar",
+        "cancel": "Cancelar"
     }
 }

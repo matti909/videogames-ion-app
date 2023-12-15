@@ -35,11 +35,9 @@
   }
 }
 
-ion-toolbar {
-  --background: #222428;
-  --color: white;
 
-  --min-height: 80px;
-  --padding-top: 20px;
-  --padding-bottom: 20px;
+ion-toolbar {
+  max-height: 50px;
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
