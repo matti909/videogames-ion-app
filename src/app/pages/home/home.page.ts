@@ -10,12 +10,12 @@ import { VideogamesService } from 'src/app/services/videogames.service';
 })
 export class HomePage implements OnInit {
   language = inject(LanguageService);
-  games = inject(VideogamesService);
+  gamesSvc = inject(VideogamesService);
   videogames: Videogames[] = [];
-  genres : IGenre[]= []
+  genres: IGenre[] = [];
   selectedLanguage = '';
 
-  ngOnInit() {
+  ngOnInit() {  
     this.selectedLanguage = localStorage.getItem('language') as string;
     this.getVGames();
     this.getVGenres();
@@ -26,19 +26,19 @@ export class HomePage implements OnInit {
   }
 
   getVGames() {
-    this.games.getGames().subscribe({
+    this.gamesSvc.getGames().subscribe({
       next: (res: any) => {
         console.log(res);
-        this.videogames = res
+        this.videogames = res;
       },
     });
   }
 
   getVGenres() {
-    this.games.getGenres().subscribe({
+    this.gamesSvc.getGenres().subscribe({
       next: (res: any) => {
         console.log(res);
-        this.genres = res
+        this.genres = res;
       },
     });
   }

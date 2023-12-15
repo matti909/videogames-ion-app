@@ -27,7 +27,6 @@
     <ion-row>
       <ion-col size="12" class="d-flex-center">
         <div class="filters">
-
           <ion-item lines="none" class="custom-input">
             <ion-icon slot="start" name="search" color="primary"></ion-icon>
             <ion-input
@@ -36,8 +35,6 @@
               [label]="'HOME.search_episode_by_number' | translate"
             ></ion-input>
           </ion-item>
-
-          
 
           <ion-item>
             <ion-icon
@@ -48,16 +45,37 @@
             <ion-select
               [okText]="'BUTTONS.accept' | translate"
               [cancelText]="'BUTTONS.cancel' | translate"
+              mode="ios"
               labelPlacement="stacked"
               [label]="'HOME.genres' | translate"
-              mode="ios"
             >
-              <ion-select-option *ngFor="let s of genres"> {{s.name}} </ion-select-option>
+              <ion-select-option *ngFor="let s of genres">
+                {{s.name}}
+              </ion-select-option>
             </ion-select>
           </ion-item>
         </div>
       </ion-col>
-      <ion-col size="6"></ion-col>
+      <ion-col
+        *ngFor="let g of videogames"
+        sizeLg="4"
+        sizeMd="6"
+        sizeSm="12"
+        size="12"
+      >
+      <ion-card>
+        <img alt="{{g.name}}" [src]="g.background_image" />
+        <ion-card-header>
+          <ion-card-title>{{g.name}}</ion-card-title>
+          <ion-card-subtitle>{{g.released}}</ion-card-subtitle>
+        </ion-card-header>
+      
+        <ion-card-content>
+          {{'HOME.genres' | translate}}: {{g.genres}}
+        </ion-card-content>
+      </ion-card>
+        
+      </ion-col>
     </ion-row>
   </ion-grid>
 </ion-content>
